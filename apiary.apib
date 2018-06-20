@@ -1,80 +1,35 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://bankAccountBalanceAgain.apiblueprint.org/
 
-# AAA
+# BankAccountBalanceAgain
 
-Organization Service
+A simple API to allowing retrieval of bank account balance information
 
-## Questions Collection [/questions]
+## Balance Collection [/accountBalanceAgain11]
 
-### List All Questions [GET]
+### Get Balance Again  [GET]
 
-+ Response 200 (application/json)
-
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+Get account balance.
 
 + Request (application/json)
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+        {"accountNr": "12345678",
+         "bankCode": "AIB"}
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
     + Headers
 
-            Location: /questions/2
+            Location: /accountBalance/2
 
     + Body
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+        {"accountNr" : "12345678",
+         "bankName" : "Allied Irish Banks plc.",
+         "branch" : "Artane Roundabout, Dublin 5",
+         "custFirstName" : "Niall",
+         "custLastName" : "Commiskey",
+         "custEmail" : "n@c.com",
+         "balance" : 23000,
+         "dateLastTransaction": "31st Oct. 2017"
+  }
